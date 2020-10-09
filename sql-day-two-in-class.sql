@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS Animal (
     CONSTRAINT FK_Animal_Species FOREIGN KEY (SpeciesID) REFERENCES Species(SpeciesID)
 );
 
-ALTER TABLE Animal ADD StaffID int(10) NULL;
+ALTER TABLE Animal ADD StaffID int(10) NOT NULL;
 
 ALTER TABLE Animal ADD CONSTRAINT FOREIGN KEY FK_Animal_Staff (StaffID) REFERENCES Staff(StaffID);
 
