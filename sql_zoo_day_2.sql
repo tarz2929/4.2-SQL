@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS Staff (
     LastName varchar(30) NOT NULL
 );
 
+-- Create a new RED LIST Status table
 CREATE TABLE IF NOT EXISTS RedListStatus ( 
     RedListStatusID tinyint(2) PRIMARY KEY AUTO_INCREMENT,
     StatusCode char(2) NOT NULL,
@@ -31,7 +32,7 @@ CREATE TABLE IF NOT EXISTS Species (
     CONSTRAINT FOREIGN KEY FK_Species_RedListStatus (RedListStatusID) REFERENCES RedListStatus(RedListStatusID)
 );
 
--- Create the Animal table with a check constraint and Staff foreigh key
+-- Create the Animal table with a check constraint and Staff/Species foreign key
 CREATE TABLE IF NOT EXISTS Animal (
     AnimalID int(10) PRIMARY KEY AUTO_INCREMENT,
     StaffID int(10) NOT NULL,

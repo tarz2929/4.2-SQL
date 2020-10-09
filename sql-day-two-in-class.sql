@@ -87,3 +87,45 @@ ALTER TABLE Animal DROP INDEX FK_Animal_Staff;
 
 ALTER TABLE Animal DROP StaffID;
 
+INSERT INTO `Species` (`SpeciesID`, `CommonName`, `ScientificName`, `Class`, `TaxonomyID`, `Diet`, `Habitat`, `RedListStatus`) 
+VALUES (NULL, 'Indian Elephant', 'Elephas Maximus Indicus', 'Mammal', '99487', 'H', 'Savannah', 'EN');
+
+-- Doesn't need the SpeciesID to work
+INSERT INTO `Species` (`CommonName`, `ScientificName`, `Class`, `TaxonomyID`, `Diet`, `Habitat`, `RedListStatus`) VALUES ('Indian Elephant', 'Elephas Maximus Indicus', 'Mammal', '99487', 'H', 'Savannah', 'EN')
+
+-- Select everything from Animal
+SELECT * FROM Animal
+
+-- Select everything from Animal where the species id = 4 (groundhog)
+SELECT * FROM Animal WHERE SpeciesID=4;
+
+-- Select the count of ground hogs from the Animal table
+SELECT COUNT(AnimalID) AS Total FROM Animal WHERE SpeciesID=4
+
+-- Select the name of all of the ground hogs
+SELECT Name FROM Animal WHERE SpeciesID=4
+
+-- Select the names of all of the ground hogs in ascending alphabetical order
+SELECT Name FROM Animal WHERE SpeciesID=4 ORDER BY Name ASC
+
+-- Select the names of all of the ground hogs in descending alphabetical order
+SELECT Name FROM Animal WHERE SpeciesID=4 ORDER BY Name DESC
+
+-- Select the first and last names of all staff; in last name descending order but first name ascending order
+SELECT FirstName, LastName 
+FROM Staff
+ORDER BY FirstName ASC, LastName DESC;
+
+-- Select the name from the animal table and scientific name from the species table
+-- where the animal is a ground hog
+SELECT A.Name, S.ScientificName 
+FROM Animal as A, Species as S
+WHERE A.SpeciesID = S.SpeciesID
+	AND A.SpeciesID=4;
+
+-- give me all of the scientific names of the animals but don't repeate yourself
+SELECT DISTINCT S.ScientificName 
+FROM Animal as A, Species as S
+WHERE A.SpeciesID = S.SpeciesID;
+
+
